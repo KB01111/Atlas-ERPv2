@@ -1,0 +1,202 @@
+---
+import DashboardLayout from '../layouts/DashboardLayout.astro';
+import Navigation from '../components/Navigation.tsx';
+---
+
+<DashboardLayout title="Settings - Atlas ERP v2">
+  <Navigation slot="navigation" client:load />
+  
+  <div class="space-y-6">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl font-bold">Settings</h1>
+      <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2">
+        💾 Save Changes
+      </button>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Settings Navigation -->
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <h2 class="text-lg font-semibold mb-4">Settings Categories</h2>
+        <nav class="space-y-2">
+          <a href="#general" class="block p-3 rounded-md bg-primary text-primary-foreground">
+            ⚙️ General
+          </a>
+          <a href="#security" class="block p-3 rounded-md hover:bg-accent">
+            🔒 Security
+          </a>
+          <a href="#notifications" class="block p-3 rounded-md hover:bg-accent">
+            🔔 Notifications
+          </a>
+          <a href="#integrations" class="block p-3 rounded-md hover:bg-accent">
+            🔗 Integrations
+          </a>
+          <a href="#billing" class="block p-3 rounded-md hover:bg-accent">
+            💳 Billing
+          </a>
+        </nav>
+      </div>
+
+      <!-- Settings Content -->
+      <div class="lg:col-span-2 space-y-6">
+        <!-- General Settings -->
+        <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+          <h3 class="text-lg font-semibold mb-4">⚙️ General Settings</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium mb-2">Company Name</label>
+              <input 
+                type="text" 
+                value="Atlas Corporation" 
+                class="w-full border rounded-md px-3 py-2 text-sm"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-2">Time Zone</label>
+              <select class="w-full border rounded-md px-3 py-2 text-sm">
+                <option>UTC-8 (Pacific Time)</option>
+                <option>UTC-5 (Eastern Time)</option>
+                <option>UTC+0 (GMT)</option>
+                <option>UTC+1 (Central European Time)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-2">Language</label>
+              <select class="w-full border rounded-md px-3 py-2 text-sm">
+                <option>English</option>
+                <option>Spanish</option>
+                <option>French</option>
+                <option>German</option>
+              </select>
+            </div>
+            <div class="flex items-center space-x-2">
+              <input type="checkbox" id="dark-mode" class="w-4 h-4" />
+              <label for="dark-mode" class="text-sm">Enable Dark Mode</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Settings -->
+        <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+          <h3 class="text-lg font-semibold mb-4">🔒 Security Settings</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-medium">Two-Factor Authentication</h4>
+                <p class="text-sm text-muted-foreground">Add an extra layer of security</p>
+              </div>
+              <button class="px-4 py-2 bg-green-100 text-green-800 rounded-md text-sm">
+                Enabled
+              </button>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-medium">Session Timeout</h4>
+                <p class="text-sm text-muted-foreground">Auto-logout after inactivity</p>
+              </div>
+              <select class="border rounded-md px-3 py-2 text-sm">
+                <option>30 minutes</option>
+                <option>1 hour</option>
+                <option>4 hours</option>
+                <option>Never</option>
+              </select>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-medium">Login Notifications</h4>
+                <p class="text-sm text-muted-foreground">Get notified of new logins</p>
+              </div>
+              <input type="checkbox" checked class="w-4 h-4" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+          <h3 class="text-lg font-semibold mb-4">🔔 Notification Settings</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-medium">Email Notifications</h4>
+                <p class="text-sm text-muted-foreground">Receive updates via email</p>
+              </div>
+              <input type="checkbox" checked class="w-4 h-4" />
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-medium">Push Notifications</h4>
+                <p class="text-sm text-muted-foreground">Browser push notifications</p>
+              </div>
+              <input type="checkbox" class="w-4 h-4" />
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-medium">Task Reminders</h4>
+                <p class="text-sm text-muted-foreground">Reminders for due tasks</p>
+              </div>
+              <input type="checkbox" checked class="w-4 h-4" />
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="font-medium">Weekly Reports</h4>
+                <p class="text-sm text-muted-foreground">Weekly summary emails</p>
+              </div>
+              <input type="checkbox" checked class="w-4 h-4" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Integration Settings -->
+        <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+          <h3 class="text-lg font-semibold mb-4">🔗 Integrations</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between p-4 border rounded-lg">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <span class="text-blue-600 font-semibold">SL</span>
+                </div>
+                <div>
+                  <h4 class="font-medium">Slack</h4>
+                  <p class="text-sm text-muted-foreground">Team communication</p>
+                </div>
+              </div>
+              <button class="px-4 py-2 bg-green-100 text-green-800 rounded-md text-sm">
+                Connected
+              </button>
+            </div>
+            
+            <div class="flex items-center justify-between p-4 border rounded-lg">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <span class="text-purple-600 font-semibold">GH</span>
+                </div>
+                <div>
+                  <h4 class="font-medium">GitHub</h4>
+                  <p class="text-sm text-muted-foreground">Code repository</p>
+                </div>
+              </div>
+              <button class="px-4 py-2 border rounded-md text-sm hover:bg-accent">
+                Connect
+              </button>
+            </div>
+            
+            <div class="flex items-center justify-between p-4 border rounded-lg">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                  <span class="text-orange-600 font-semibold">ZP</span>
+                </div>
+                <div>
+                  <h4 class="font-medium">Zapier</h4>
+                  <p class="text-sm text-muted-foreground">Workflow automation</p>
+                </div>
+              </div>
+              <button class="px-4 py-2 border rounded-md text-sm hover:bg-accent">
+                Connect
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DashboardLayout>

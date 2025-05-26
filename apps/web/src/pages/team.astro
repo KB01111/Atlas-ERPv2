@@ -1,0 +1,210 @@
+---
+import DashboardLayout from '../layouts/DashboardLayout.astro';
+import Navigation from '../components/Navigation.tsx';
+---
+
+<DashboardLayout title="Team - Atlas ERP v2">
+  <Navigation slot="navigation" client:load />
+  
+  <div class="space-y-6">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl font-bold">Team</h1>
+      <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2">
+        + Invite Member
+      </button>
+    </div>
+
+    <!-- Team Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <div class="flex flex-col">
+          <span class="text-sm font-medium text-muted-foreground">Total Members</span>
+          <span class="text-2xl font-bold">47</span>
+        </div>
+      </div>
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <div class="flex flex-col">
+          <span class="text-sm font-medium text-muted-foreground">Active Today</span>
+          <span class="text-2xl font-bold text-green-600">42</span>
+        </div>
+      </div>
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <div class="flex flex-col">
+          <span class="text-sm font-medium text-muted-foreground">Departments</span>
+          <span class="text-2xl font-bold text-blue-600">8</span>
+        </div>
+      </div>
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <div class="flex flex-col">
+          <span class="text-sm font-medium text-muted-foreground">Avg. Performance</span>
+          <span class="text-2xl font-bold text-purple-600">94.2%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team Members Grid -->
+    <div class="rounded-xl border bg-card text-card-foreground shadow">
+      <div class="p-6">
+        <h2 class="text-xl font-semibold mb-4">Team Members</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Team Member Card -->
+          <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <span class="text-blue-600 font-semibold text-lg">JS</span>
+              </div>
+              <div>
+                <h3 class="font-semibold">John Smith</h3>
+                <p class="text-sm text-muted-foreground">Lead Developer</p>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm">
+                <span>Projects:</span>
+                <span class="font-medium">12</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Performance:</span>
+                <span class="font-medium text-green-600">98.5%</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Status:</span>
+                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Online</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                <span class="text-purple-600 font-semibold text-lg">AD</span>
+              </div>
+              <div>
+                <h3 class="font-semibold">Alice Davis</h3>
+                <p class="text-sm text-muted-foreground">UI/UX Designer</p>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm">
+                <span>Projects:</span>
+                <span class="font-medium">8</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Performance:</span>
+                <span class="font-medium text-green-600">96.2%</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Status:</span>
+                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Online</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                <span class="text-green-600 font-semibold text-lg">MJ</span>
+              </div>
+              <div>
+                <h3 class="font-semibold">Mike Johnson</h3>
+                <p class="text-sm text-muted-foreground">Project Manager</p>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm">
+                <span>Projects:</span>
+                <span class="font-medium">15</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Performance:</span>
+                <span class="font-medium text-green-600">94.8%</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Status:</span>
+                <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs">Away</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                <span class="text-orange-600 font-semibold text-lg">SW</span>
+              </div>
+              <div>
+                <h3 class="font-semibold">Sarah Wilson</h3>
+                <p class="text-sm text-muted-foreground">Marketing Lead</p>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm">
+                <span>Projects:</span>
+                <span class="font-medium">6</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Performance:</span>
+                <span class="font-medium text-green-600">92.1%</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Status:</span>
+                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Online</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                <span class="text-red-600 font-semibold text-lg">DB</span>
+              </div>
+              <div>
+                <h3 class="font-semibold">David Brown</h3>
+                <p class="text-sm text-muted-foreground">DevOps Engineer</p>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm">
+                <span>Projects:</span>
+                <span class="font-medium">9</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Performance:</span>
+                <span class="font-medium text-green-600">97.3%</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Status:</span>
+                <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">Offline</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div class="flex items-center space-x-3 mb-3">
+              <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center">
+                <span class="text-pink-600 font-semibold text-lg">LT</span>
+              </div>
+              <div>
+                <h3 class="font-semibold">Lisa Taylor</h3>
+                <p class="text-sm text-muted-foreground">QA Engineer</p>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm">
+                <span>Projects:</span>
+                <span class="font-medium">11</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Performance:</span>
+                <span class="font-medium text-green-600">95.7%</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>Status:</span>
+                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Online</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DashboardLayout>

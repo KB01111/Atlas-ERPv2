@@ -1,0 +1,101 @@
+---
+import DashboardLayout from '../layouts/DashboardLayout.astro';
+import Navigation from '../components/Navigation.tsx';
+---
+
+<DashboardLayout title="Projects - Atlas ERP v2">
+  <Navigation slot="navigation" client:load />
+  
+  <div class="space-y-6">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl font-bold">Projects</h1>
+      <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2">
+        + New Project
+      </button>
+    </div>
+
+    <!-- Project Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <div class="flex flex-col">
+          <span class="text-sm font-medium text-muted-foreground">Total Projects</span>
+          <span class="text-2xl font-bold">142</span>
+        </div>
+      </div>
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <div class="flex flex-col">
+          <span class="text-sm font-medium text-muted-foreground">Active</span>
+          <span class="text-2xl font-bold text-green-600">89</span>
+        </div>
+      </div>
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <div class="flex flex-col">
+          <span class="text-sm font-medium text-muted-foreground">Completed</span>
+          <span class="text-2xl font-bold text-blue-600">45</span>
+        </div>
+      </div>
+      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
+        <div class="flex flex-col">
+          <span class="text-sm font-medium text-muted-foreground">On Hold</span>
+          <span class="text-2xl font-bold text-yellow-600">8</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects List -->
+    <div class="rounded-xl border bg-card text-card-foreground shadow">
+      <div class="p-6">
+        <h2 class="text-xl font-semibold mb-4">Recent Projects</h2>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between p-4 border rounded-lg">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                <span class="text-blue-600 font-semibold">WA</span>
+              </div>
+              <div>
+                <h3 class="font-semibold">Website Redesign</h3>
+                <p class="text-sm text-muted-foreground">Complete overhaul of company website</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Active</span>
+              <span class="text-sm text-muted-foreground">Due: Dec 15</span>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between p-4 border rounded-lg">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                <span class="text-purple-600 font-semibold">MA</span>
+              </div>
+              <div>
+                <h3 class="font-semibold">Mobile App Development</h3>
+                <p class="text-sm text-muted-foreground">iOS and Android app for customer portal</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">In Progress</span>
+              <span class="text-sm text-muted-foreground">Due: Jan 30</span>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between p-4 border rounded-lg">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                <span class="text-green-600 font-semibold">DB</span>
+              </div>
+              <div>
+                <h3 class="font-semibold">Database Migration</h3>
+                <p class="text-sm text-muted-foreground">Migrate legacy systems to cloud infrastructure</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <span class="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs">Completed</span>
+              <span class="text-sm text-muted-foreground">Completed: Nov 28</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DashboardLayout>
