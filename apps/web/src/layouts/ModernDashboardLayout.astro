@@ -31,7 +31,8 @@ const { title, description = 'Atlas ERP - Modern Enterprise Resource Planning' }
 
     <title>{title}</title>
 
-    <!-- Import Theme System -->
+    <!-- Import Global Styles -->
+    <link rel='stylesheet' href='/src/styles/global.css' />
     <link rel='stylesheet' href='/src/styles/themes.css' />
   </head>
 
@@ -278,10 +279,7 @@ const { title, description = 'Atlas ERP - Modern Enterprise Resource Planning' }
 </html>
 
 <style>
-  /* Import our custom theme system */
-  @import '../styles/themes.css';
-
-  /* Additional layout-specific styles */
+  /* Layout-specific styles */
   .text-gradient {
     background: linear-gradient(135deg, #3b82f6, #8b5cf6);
     -webkit-background-clip: text;

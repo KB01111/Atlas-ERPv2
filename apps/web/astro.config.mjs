@@ -9,7 +9,7 @@ export default defineConfig({
   integrations: [
     react(),
     tailwind({
-      applyBaseStyles: false, // We'll use our own base styles
+      applyBaseStyles: true, // Enable Tailwind base styles
     }),
   ],
   output: 'static', // Static generation for maximum performance
