@@ -50,7 +50,7 @@ export default function KPICard({
   className = '',
 }: KPICardProps) {
   const formatValue = (val: number | string): string => {
-    if (typeof val === 'string') return val;
+    if (typeof val === 'string') {
 
     switch (format) {
       case 'currency':
