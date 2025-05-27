@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 
-export const GET: APIRoute = async ({ request }) => {
+export const GET: APIRoute = async ({ request: _request }) => {
   try {
     const services = {
       api: 'healthy',

@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { supabase } from '../lib/supabase-client';
+
+interface User {
+  id: string;
+  email: string;
+  user_metadata?: Record<string, unknown>;
+}
 
 interface LoginFormProps {
-  onSuccess?: (user: any) => void;
+  onSuccess?: (user: User) => void;
   onError?: (error: string) => void;
 }
 
@@ -99,7 +104,7 @@ export default function LoginForm({ onSuccess, onError }: LoginFormProps) {
 
       <div className='mt-4 text-center'>
         <p className='text-sm text-muted-foreground'>
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
           <a href='/register' className='text-primary hover:underline'>
             Sign up
           </a>

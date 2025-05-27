@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, AlertCircle, Clock, RefreshCw } from 'lucide-react';
+import { AlertCircle, CheckCircle, Clock, RefreshCw, XCircle } from 'lucide-react';
+import { useState } from 'react';
 
 interface ServiceStatus {
   name: string;

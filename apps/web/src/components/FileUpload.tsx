@@ -1,7 +1,18 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
+
+interface UploadedDocument {
+  id: string;
+  title: string;
+  description?: string;
+  tags?: string[];
+  file_path: string;
+  file_size: number;
+  file_type: string;
+  created_at: string;
+}
 
 interface FileUploadProps {
-  onUploadSuccess?: (document: any) => void;
+  onUploadSuccess?: (document: UploadedDocument) => void;
   onUploadError?: (error: string) => void;
   acceptedTypes?: string[];
   maxSize?: number; // in MB

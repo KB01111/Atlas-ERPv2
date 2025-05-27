@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // Simple Chart Component (inline for demo)
 const SimpleChart = ({
   data,
   title,
-  type = 'bar',
+  type: _type = 'bar',
 }: {
   data: { label: string; value: number }[];
   title: string;
@@ -43,14 +43,14 @@ export default function AnalyticsCharts() {
     { label: 'Jun', value: 25 },
   ]);
 
-  const [taskData, setTaskData] = useState([
+  const [taskData] = useState([
     { label: 'Completed', value: 198 },
     { label: 'In Progress', value: 156 },
     { label: 'Pending', value: 89 },
     { label: 'Overdue', value: 33 },
   ]);
 
-  const [revenueData, setRevenueData] = useState([
+  const [revenueData] = useState([
     { label: 'Q1', value: 125000 },
     { label: 'Q2', value: 142000 },
     { label: 'Q3', value: 158000 },

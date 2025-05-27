@@ -1,56 +1,57 @@
 ---
-import DashboardLayout from '../layouts/DashboardLayout.astro';
-import Navigation from '../components/Navigation.tsx';
 import AnalyticsCharts from '../components/AnalyticsCharts.tsx';
-import RealtimeChart from '../components/RealtimeChart.tsx';
+import Navigation from '../components/Navigation.tsx';
+import DashboardLayout from '../layouts/DashboardLayout.astro';
 ---
 
-<DashboardLayout title="Analytics - Atlas ERP v2">
-  <Navigation slot="navigation" client:load />
+<DashboardLayout title='Analytics - Atlas ERP v2'>
+  <Navigation slot='navigation' client:load />
 
-  <div class="space-y-6">
-    <div class="flex justify-between items-center">
-      <h1 class="text-3xl font-bold">Analytics</h1>
-      <div class="flex space-x-2">
-        <select class="border rounded-md px-3 py-2 text-sm">
+  <div class='space-y-6'>
+    <div class='flex justify-between items-center'>
+      <h1 class='text-3xl font-bold'>Analytics</h1>
+      <div class='flex space-x-2'>
+        <select class='border rounded-md px-3 py-2 text-sm'>
           <option>Last 30 days</option>
           <option>Last 90 days</option>
           <option>Last year</option>
         </select>
-        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
+        <button
+          class='inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2'
+        >
           📊 Export Report
         </button>
       </div>
     </div>
 
     <!-- Overview Stats -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <div class="flex flex-col">
-          <span class="text-sm font-medium text-muted-foreground">Total Revenue</span>
-          <span class="text-2xl font-bold">$592,000</span>
-          <span class="text-sm text-green-600">+12.5% from last month</span>
+    <div class='grid grid-cols-1 md:grid-cols-4 gap-6'>
+      <div class='rounded-xl border bg-card text-card-foreground shadow p-6'>
+        <div class='flex flex-col'>
+          <span class='text-sm font-medium text-muted-foreground'>Total Revenue</span>
+          <span class='text-2xl font-bold'>$592,000</span>
+          <span class='text-sm text-green-600'>+12.5% from last month</span>
         </div>
       </div>
-      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <div class="flex flex-col">
-          <span class="text-sm font-medium text-muted-foreground">Active Projects</span>
-          <span class="text-2xl font-bold">89</span>
-          <span class="text-sm text-blue-600">+5 new this week</span>
+      <div class='rounded-xl border bg-card text-card-foreground shadow p-6'>
+        <div class='flex flex-col'>
+          <span class='text-sm font-medium text-muted-foreground'>Active Projects</span>
+          <span class='text-2xl font-bold'>89</span>
+          <span class='text-sm text-blue-600'>+5 new this week</span>
         </div>
       </div>
-      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <div class="flex flex-col">
-          <span class="text-sm font-medium text-muted-foreground">Team Efficiency</span>
-          <span class="text-2xl font-bold">94.2%</span>
-          <span class="text-sm text-purple-600">+2.1% improvement</span>
+      <div class='rounded-xl border bg-card text-card-foreground shadow p-6'>
+        <div class='flex flex-col'>
+          <span class='text-sm font-medium text-muted-foreground'>Team Efficiency</span>
+          <span class='text-2xl font-bold'>94.2%</span>
+          <span class='text-sm text-purple-600'>+2.1% improvement</span>
         </div>
       </div>
-      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <div class="flex flex-col">
-          <span class="text-sm font-medium text-muted-foreground">Client Satisfaction</span>
-          <span class="text-2xl font-bold">4.8/5</span>
-          <span class="text-sm text-orange-600">Based on 156 reviews</span>
+      <div class='rounded-xl border bg-card text-card-foreground shadow p-6'>
+        <div class='flex flex-col'>
+          <span class='text-sm font-medium text-muted-foreground'>Client Satisfaction</span>
+          <span class='text-2xl font-bold'>4.8/5</span>
+          <span class='text-sm text-orange-600'>Based on 156 reviews</span>
         </div>
       </div>
     </div>
@@ -59,69 +60,69 @@ import RealtimeChart from '../components/RealtimeChart.tsx';
     <AnalyticsCharts client:load />
 
     <!-- Additional Analytics -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-lg font-semibold mb-4">🎯 Top Performing Teams</h3>
-        <div class="space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-sm">Development Team</span>
-            <span class="text-sm font-bold text-green-600">98.5%</span>
+    <div class='grid grid-cols-1 lg:grid-cols-3 gap-6'>
+      <div class='rounded-xl border bg-card text-card-foreground shadow p-6'>
+        <h3 class='text-lg font-semibold mb-4'>🎯 Top Performing Teams</h3>
+        <div class='space-y-3'>
+          <div class='flex justify-between items-center'>
+            <span class='text-sm'>Development Team</span>
+            <span class='text-sm font-bold text-green-600'>98.5%</span>
           </div>
-          <div class="flex justify-between items-center">
-            <span class="text-sm">Design Team</span>
-            <span class="text-sm font-bold text-blue-600">96.2%</span>
+          <div class='flex justify-between items-center'>
+            <span class='text-sm'>Design Team</span>
+            <span class='text-sm font-bold text-blue-600'>96.2%</span>
           </div>
-          <div class="flex justify-between items-center">
-            <span class="text-sm">Marketing Team</span>
-            <span class="text-sm font-bold text-purple-600">94.8%</span>
+          <div class='flex justify-between items-center'>
+            <span class='text-sm'>Marketing Team</span>
+            <span class='text-sm font-bold text-purple-600'>94.8%</span>
           </div>
-          <div class="flex justify-between items-center">
-            <span class="text-sm">Sales Team</span>
-            <span class="text-sm font-bold text-orange-600">92.1%</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-lg font-semibold mb-4">⏰ Recent Activity</h3>
-        <div class="space-y-3">
-          <div class="text-sm">
-            <span class="font-medium">Project Alpha</span> completed
-            <span class="text-muted-foreground block">2 hours ago</span>
-          </div>
-          <div class="text-sm">
-            <span class="font-medium">New client</span> onboarded
-            <span class="text-muted-foreground block">4 hours ago</span>
-          </div>
-          <div class="text-sm">
-            <span class="font-medium">Team meeting</span> scheduled
-            <span class="text-muted-foreground block">6 hours ago</span>
-          </div>
-          <div class="text-sm">
-            <span class="font-medium">Budget approved</span> for Q1
-            <span class="text-muted-foreground block">1 day ago</span>
+          <div class='flex justify-between items-center'>
+            <span class='text-sm'>Sales Team</span>
+            <span class='text-sm font-bold text-orange-600'>92.1%</span>
           </div>
         </div>
       </div>
 
-      <div class="rounded-xl border bg-card text-card-foreground shadow p-6">
-        <h3 class="text-lg font-semibold mb-4">🚀 Upcoming Milestones</h3>
-        <div class="space-y-3">
-          <div class="text-sm">
-            <span class="font-medium">Website Launch</span>
-            <span class="text-muted-foreground block">Dec 15, 2024</span>
+      <div class='rounded-xl border bg-card text-card-foreground shadow p-6'>
+        <h3 class='text-lg font-semibold mb-4'>⏰ Recent Activity</h3>
+        <div class='space-y-3'>
+          <div class='text-sm'>
+            <span class='font-medium'>Project Alpha</span> completed
+            <span class='text-muted-foreground block'>2 hours ago</span>
           </div>
-          <div class="text-sm">
-            <span class="font-medium">Mobile App Beta</span>
-            <span class="text-muted-foreground block">Jan 10, 2025</span>
+          <div class='text-sm'>
+            <span class='font-medium'>New client</span> onboarded
+            <span class='text-muted-foreground block'>4 hours ago</span>
           </div>
-          <div class="text-sm">
-            <span class="font-medium">Q1 Review</span>
-            <span class="text-muted-foreground block">Mar 31, 2025</span>
+          <div class='text-sm'>
+            <span class='font-medium'>Team meeting</span> scheduled
+            <span class='text-muted-foreground block'>6 hours ago</span>
           </div>
-          <div class="text-sm">
-            <span class="font-medium">Annual Conference</span>
-            <span class="text-muted-foreground block">Jun 15, 2025</span>
+          <div class='text-sm'>
+            <span class='font-medium'>Budget approved</span> for Q1
+            <span class='text-muted-foreground block'>1 day ago</span>
+          </div>
+        </div>
+      </div>
+
+      <div class='rounded-xl border bg-card text-card-foreground shadow p-6'>
+        <h3 class='text-lg font-semibold mb-4'>🚀 Upcoming Milestones</h3>
+        <div class='space-y-3'>
+          <div class='text-sm'>
+            <span class='font-medium'>Website Launch</span>
+            <span class='text-muted-foreground block'>Dec 15, 2024</span>
+          </div>
+          <div class='text-sm'>
+            <span class='font-medium'>Mobile App Beta</span>
+            <span class='text-muted-foreground block'>Jan 10, 2025</span>
+          </div>
+          <div class='text-sm'>
+            <span class='font-medium'>Q1 Review</span>
+            <span class='text-muted-foreground block'>Mar 31, 2025</span>
+          </div>
+          <div class='text-sm'>
+            <span class='font-medium'>Annual Conference</span>
+            <span class='text-muted-foreground block'>Jun 15, 2025</span>
           </div>
         </div>
       </div>

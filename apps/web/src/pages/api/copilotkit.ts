@@ -5,7 +5,7 @@ import type { APIRoute } from 'astro';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const body = await request.json();
+    const _body = await request.json();
 
     // Basic response structure for CopilotKit
     const response = {

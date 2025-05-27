@@ -1,6 +1,7 @@
 # Atlas ERP v2 Documentation
 
-This documentation app provides comprehensive guides and API references for Atlas ERP v2.
+This documentation app provides comprehensive guides and API references for
+Atlas ERP v2.
 
 ## Getting Started
 

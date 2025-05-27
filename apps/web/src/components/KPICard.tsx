@@ -1,6 +1,5 @@
-import React from 'react';
-import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { Minus, TrendingDown, TrendingUp } from 'lucide-react';
 
 interface KPICardProps {
   title: string;
@@ -51,6 +50,8 @@ export default function KPICard({
 }: KPICardProps) {
   const formatValue = (val: number | string): string => {
     if (typeof val === 'string') {
+      return val;
+    }
 
     switch (format) {
       case 'currency':
@@ -86,7 +87,7 @@ export default function KPICard({
   return (
     <div
       className={`
-        relative overflow-hidden rounded-xl border ${colors.border} ${colors.bg} 
+        relative overflow-hidden rounded-xl border ${colors.border} ${colors.bg}
         p-6 shadow-sm transition-all duration-200 hover:shadow-md
         ${className}
       `}
