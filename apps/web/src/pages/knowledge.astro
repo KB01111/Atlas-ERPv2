@@ -1,0 +1,155 @@
+---
+import DashboardLayout from '../layouts/DashboardLayout.astro';
+import Navigation from '../components/Navigation.tsx';
+---
+
+<DashboardLayout title="Knowledge Graph - Atlas ERP v2">
+  <Navigation slot="navigation" client:load />
+
+  <div class="space-y-6">
+    <!-- Static Header -->
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold mb-2">Knowledge Graph</h1>
+      <p class="text-muted-foreground">
+        Visualize and explore the relationships between your business data and documents.
+      </p>
+    </header>
+
+    <!-- Knowledge Stats (Static) -->
+    <section class="mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="p-6 border rounded-lg bg-card">
+          <h3 class="font-semibold mb-2">🔗 Total Nodes</h3>
+          <p class="text-2xl font-bold">3,247</p>
+          <p class="text-sm text-muted-foreground">+127 this week</p>
+        </div>
+        <div class="p-6 border rounded-lg bg-card">
+          <h3 class="font-semibold mb-2">🌐 Relationships</h3>
+          <p class="text-2xl font-bold">8,934</p>
+          <p class="text-sm text-muted-foreground">connections mapped</p>
+        </div>
+        <div class="p-6 border rounded-lg bg-card">
+          <h3 class="font-semibold mb-2">🏷️ Entities</h3>
+          <p class="text-2xl font-bold">1,456</p>
+          <p class="text-sm text-muted-foreground">extracted entities</p>
+        </div>
+        <div class="p-6 border rounded-lg bg-card">
+          <h3 class="font-semibold mb-2">💡 Concepts</h3>
+          <p class="text-2xl font-bold">892</p>
+          <p class="text-sm text-muted-foreground">identified concepts</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Knowledge Graph Features (Static) -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">🧠 Knowledge Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 border rounded-lg">
+          <h3 class="font-semibold mb-2">🔍 Semantic Search</h3>
+          <p class="text-sm text-muted-foreground">
+            Find related concepts and entities using AI-powered semantic understanding.
+          </p>
+        </div>
+        <div class="p-6 border rounded-lg">
+          <h3 class="font-semibold mb-2">📊 Relationship Mapping</h3>
+          <p class="text-sm text-muted-foreground">
+            Automatically discover and visualize connections between data points.
+          </p>
+        </div>
+        <div class="p-6 border rounded-lg">
+          <h3 class="font-semibold mb-2">🎯 Entity Extraction</h3>
+          <p class="text-sm text-muted-foreground">
+            AI-powered extraction of people, places, organizations, and concepts.
+          </p>
+        </div>
+        <div class="p-6 border rounded-lg">
+          <h3 class="font-semibold mb-2">🔄 Auto-Updates</h3>
+          <p class="text-sm text-muted-foreground">
+            Knowledge graph updates automatically as new documents are processed.
+          </p>
+        </div>
+        <div class="p-6 border rounded-lg">
+          <h3 class="font-semibold mb-2">📈 Analytics</h3>
+          <p class="text-sm text-muted-foreground">
+            Insights into knowledge patterns, trends, and relationship strengths.
+          </p>
+        </div>
+        <div class="p-6 border rounded-lg">
+          <h3 class="font-semibold mb-2">🎨 Interactive Visualization</h3>
+          <p class="text-sm text-muted-foreground">
+            Explore your knowledge graph with interactive 3D visualizations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Knowledge Graph (React Island) -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">🌐 Interactive Knowledge Graph</h2>
+      <p class="text-muted-foreground mb-6">
+        Explore your knowledge graph with interactive visualization (React Island):
+      </p>
+      <div class="border rounded-lg bg-card overflow-hidden">
+        <div class="h-96 flex items-center justify-center">
+          <div class="text-center">
+            <p class="text-muted-foreground">
+              🚧 Knowledge Graph Visualization will be loaded here as a React Island
+            </p>
+            <p class="text-sm text-muted-foreground mt-2">
+              This will include Cytoscape.js interactive graph with nodes and relationships
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Knowledge Insights (Static) -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">💡 Recent Insights</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="border rounded-lg p-6 bg-card">
+          <h3 class="font-semibold mb-2">🔗 New Connections Discovered</h3>
+          <p class="text-sm text-muted-foreground mb-4">
+            AI has identified 23 new relationships between your documents and entities.
+          </p>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+              Project Alpha → Financial Report Q4
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+              Client Meeting → Contract Amendment
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+              Team Member → Project Deliverable
+            </li>
+          </ul>
+        </div>
+        
+        <div class="border rounded-lg p-6 bg-card">
+          <h3 class="font-semibold mb-2">📊 Knowledge Trends</h3>
+          <p class="text-sm text-muted-foreground mb-4">
+            Most frequently referenced concepts and entities this week.
+          </p>
+          <ul class="space-y-2 text-sm">
+            <li class="flex justify-between">
+              <span>Financial Planning</span>
+              <span class="text-muted-foreground">47 references</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Project Management</span>
+              <span class="text-muted-foreground">34 references</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Client Relations</span>
+              <span class="text-muted-foreground">28 references</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</DashboardLayout>

@@ -2,12 +2,16 @@
 import DashboardLayout from '../layouts/DashboardLayout.astro';
 import Navigation from '../components/Navigation.tsx';
 import DashboardStats from '../components/DashboardStats.tsx';
+import KPICard from '../components/KPICard.tsx';
+import StatusPanel from '../components/StatusPanel.tsx';
+import CopilotProvider from '../components/CopilotProvider.tsx';
 ---
 
 <DashboardLayout title="Dashboard - Atlas ERP v2">
   <Navigation slot="navigation" client:load />
 
-  <div class="space-y-6">
+  <CopilotProvider client:load>
+    <div class="space-y-6">
     <!-- Static Header (No JavaScript) -->
     <header class="mb-8">
       <h1 class="text-4xl font-bold text-center mb-4">Atlas ERP v2</h1>
@@ -41,21 +45,67 @@ import DashboardStats from '../components/DashboardStats.tsx';
       </div>
     </section>
 
-    <!-- Interactive Island (With JavaScript) -->
+    <!-- KPI Cards Section (Interactive Islands) -->
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4">📊 Interactive Dashboard (React Island)</h2>
-      <p class="text-muted-foreground mb-6">
-        The component below is a React island that gets hydrated with JavaScript for interactivity:
-      </p>
-      <DashboardStats client:load />
+      <h2 class="text-2xl font-semibold mb-6">📊 Key Performance Indicators</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <KPICard
+          title="Total Revenue"
+          value={125000}
+          change={12.5}
+          color="green"
+          format="currency"
+          client:load
+        />
+        <KPICard
+          title="Active Projects"
+          value={42}
+          change={8.3}
+          color="blue"
+          format="number"
+          client:load
+        />
+        <KPICard
+          title="Team Members"
+          value={28}
+          change={-2.1}
+          color="purple"
+          format="number"
+          client:load
+        />
+        <KPICard
+          title="Completion Rate"
+          value={94.2}
+          change={5.7}
+          color="yellow"
+          format="percentage"
+          client:load
+        />
+      </div>
     </section>
 
-    <!-- Static Footer (No JavaScript) -->
-    <footer class="text-center text-muted-foreground">
-      <p>Built with Astro + React + Turborepo + ShadCN UI</p>
-      <p class="text-sm mt-2">
-        🔥 This page loads instantly and only hydrates interactive components!
-      </p>
-    </footer>
-  </div>
+    <!-- Status Panel and Analytics Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6">📈 System Overview</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Status Panel -->
+        <div class="lg:col-span-1">
+          <StatusPanel client:load />
+        </div>
+        <!-- Dashboard Stats -->
+        <div class="lg:col-span-2">
+          <DashboardStats client:load />
+        </div>
+      </div>
+    </section>
+
+      <!-- Static Footer (No JavaScript) -->
+      <footer class="text-center text-muted-foreground">
+        <p>Built with Astro + React + Turborepo + ShadCN UI</p>
+        <p class="text-sm mt-2">
+          🔥 This page loads instantly and only hydrates interactive components!
+        </p>
+      </footer>
+    </div>
+  </CopilotProvider>
 </DashboardLayout>
