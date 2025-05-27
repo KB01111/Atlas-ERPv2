@@ -2,6 +2,8 @@
 import CopilotProvider from '../components/CopilotProvider.tsx';
 import DashboardStats from '../components/DashboardStats.tsx';
 import StatusPanel from '../components/StatusPanel.tsx';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card.tsx';
+import EnhancedKPICard from '../components/ui/EnhancedKPICard.tsx';
 import ModernNavigation from '../components/ui/ModernNavigation.tsx';
 import ModernDashboardLayout from '../layouts/ModernDashboardLayout.astro';
 ---
@@ -49,17 +51,25 @@ import ModernDashboardLayout from '../layouts/ModernDashboardLayout.astro';
       <section class='mb-12'>
         <h2 class='text-3xl font-bold text-gradient mb-8'>📊 Key Performance Indicators</h2>
         <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8'>
-          <RevenueKPICard
+          <EnhancedKPICard
+            title='Revenue'
             value={125000}
             change={12.5}
+            color='green'
+            icon='dollar'
+            format='currency'
             target={150000}
             variant='gradient'
             animated={true}
             client:load
           />
-          <UsersKPICard
+          <EnhancedKPICard
+            title='Active Users'
             value={1284}
             change={8.3}
+            color='blue'
+            icon='users'
+            format='number'
             target={1500}
             variant='gradient'
             animated={true}
@@ -77,9 +87,13 @@ import ModernDashboardLayout from '../layouts/ModernDashboardLayout.astro';
             animated={true}
             client:load
           />
-          <ConversionKPICard
+          <EnhancedKPICard
+            title='Conversion Rate'
             value={94.2}
             change={5.7}
+            color='yellow'
+            icon='chart'
+            format='percentage'
             target={95}
             variant='gradient'
             animated={true}
