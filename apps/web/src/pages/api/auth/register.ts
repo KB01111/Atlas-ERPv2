@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
 import { supabase } from '../../../lib/supabase-client';
 
+export const prerender = false;
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const { email, password, firstName, lastName } = await request.json();
@@ -77,4 +79,11 @@ export const POST: APIRoute = async ({ request }) => {
       headers: { 'Content-Type': 'application/json' },
     });
   }
+};
+
+export const GET: APIRoute = async () => {
+  return new Response(JSON.stringify({ message: 'Register endpoint - use POST method' }), {
+    status: 405,
+    headers: { 'Content-Type': 'application/json' },
+  });
 };

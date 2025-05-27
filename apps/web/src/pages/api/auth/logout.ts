@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
 import { supabase } from '../../../lib/supabase-client';
 
+export const prerender = false;
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const authHeader = request.headers.get('Authorization');
@@ -40,4 +42,11 @@ export const POST: APIRoute = async ({ request }) => {
       headers: { 'Content-Type': 'application/json' },
     });
   }
+};
+
+export const GET: APIRoute = async () => {
+  return new Response(JSON.stringify({ message: 'Logout endpoint - use POST method' }), {
+    status: 405,
+    headers: { 'Content-Type': 'application/json' },
+  });
 };

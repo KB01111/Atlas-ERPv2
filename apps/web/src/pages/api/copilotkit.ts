@@ -1,5 +1,7 @@
 import type { APIRoute } from 'astro';
 
+export const prerender = false;
+
 // CopilotKit API endpoint for Atlas ERP v2
 // This will be enhanced with actual CopilotKit integration
 
@@ -82,5 +84,12 @@ export const OPTIONS: APIRoute = async () => {
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     },
+  });
+};
+
+export const GET: APIRoute = async () => {
+  return new Response(JSON.stringify({ message: 'CopilotKit endpoint - use POST method' }), {
+    status: 405,
+    headers: { 'Content-Type': 'application/json' },
   });
 };
