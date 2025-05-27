@@ -50,7 +50,7 @@ export default function DashboardStats() {
   useEffect(() => {
     // Simulate API call
     const fetchStats = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 1000));
       setStats({
         totalProjects: 142,
         activeUsers: 1284,
@@ -65,7 +65,7 @@ export default function DashboardStats() {
 
   const refreshStats = () => {
     setIsLoading(true);
-    setStats((prev) => ({
+    setStats(prev => ({
       totalProjects: prev.totalProjects + Math.floor(Math.random() * 5),
       activeUsers: prev.activeUsers + Math.floor(Math.random() * 20),
       revenue: prev.revenue + Math.floor(Math.random() * 1000),

@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+} from 'recharts';
 
 interface ChartData {
   name: string;
@@ -27,7 +38,7 @@ export default function RealtimeChart({
   height = 300,
   color = '#8884d8',
   showLegend = true,
-  showGrid = true
+  showGrid = true,
 }: RealtimeChartProps) {
   const [data, setData] = useState<ChartData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -57,10 +68,10 @@ export default function RealtimeChart({
       }
 
       const result = await response.json();
-      
+
       // Handle different response formats
       let chartData: ChartData[] = [];
-      
+
       if (Array.isArray(result)) {
         chartData = result;
       } else if (result.data && Array.isArray(result.data)) {
@@ -103,9 +114,9 @@ export default function RealtimeChart({
     // Try to format as date if it looks like a date
     if (typeof tickItem === 'string' && tickItem.match(/^\d{4}-\d{2}/)) {
       try {
-        return new Date(tickItem).toLocaleDateString('en-US', { 
-          month: 'short', 
-          day: 'numeric' 
+        return new Date(tickItem).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
         });
       } catch {
         return tickItem;
@@ -116,10 +127,10 @@ export default function RealtimeChart({
 
   if (isLoading) {
     return (
-      <div className="bg-card p-6 rounded-lg border">
-        <h3 className="text-lg font-semibold mb-4">{title}</h3>
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      <div className='bg-card p-6 rounded-lg border'>
+        <h3 className='text-lg font-semibold mb-4'>{title}</h3>
+        <div className='flex items-center justify-center h-64'>
+          <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-primary'></div>
         </div>
       </div>
     );
@@ -127,15 +138,15 @@ export default function RealtimeChart({
 
   if (error) {
     return (
-      <div className="bg-card p-6 rounded-lg border">
-        <h3 className="text-lg font-semibold mb-4">{title}</h3>
-        <div className="flex items-center justify-center h-64">
-          <div className="text-center">
-            <div className="text-destructive mb-2">⚠️</div>
-            <p className="text-sm text-muted-foreground">{error}</p>
+      <div className='bg-card p-6 rounded-lg border'>
+        <h3 className='text-lg font-semibold mb-4'>{title}</h3>
+        <div className='flex items-center justify-center h-64'>
+          <div className='text-center'>
+            <div className='text-destructive mb-2'>⚠️</div>
+            <p className='text-sm text-muted-foreground'>{error}</p>
             <button
               onClick={fetchData}
-              className="mt-2 px-3 py-1 text-xs bg-primary text-primary-foreground rounded hover:bg-primary/90"
+              className='mt-2 px-3 py-1 text-xs bg-primary text-primary-foreground rounded hover:bg-primary/90'
             >
               Retry
             </button>
@@ -146,46 +157,42 @@ export default function RealtimeChart({
   }
 
   return (
-    <div className="bg-card p-6 rounded-lg border">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-semibold">{title}</h3>
-        <div className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-xs text-muted-foreground">
+    <div className='bg-card p-6 rounded-lg border'>
+      <div className='flex justify-between items-center mb-4'>
+        <h3 className='text-lg font-semibold'>{title}</h3>
+        <div className='flex items-center space-x-2'>
+          <div className='w-2 h-2 bg-green-500 rounded-full animate-pulse'></div>
+          <span className='text-xs text-muted-foreground'>
             {lastUpdated ? `Updated ${lastUpdated.toLocaleTimeString()}` : 'Live'}
           </span>
         </div>
       </div>
 
       {data.length === 0 ? (
-        <div className="flex items-center justify-center h-64">
-          <p className="text-muted-foreground">No data available</p>
+        <div className='flex items-center justify-center h-64'>
+          <p className='text-muted-foreground'>No data available</p>
         </div>
       ) : (
-        <ResponsiveContainer width="100%" height={height}>
+        <ResponsiveContainer width='100%' height={height}>
           {type === 'line' ? (
             <LineChart data={data}>
-              {showGrid && <CartesianGrid strokeDasharray="3 3" />}
-              <XAxis 
-                dataKey="name" 
-                tickFormatter={formatXAxisLabel}
-                fontSize={12}
-              />
+              {showGrid && <CartesianGrid strokeDasharray='3 3' />}
+              <XAxis dataKey='name' tickFormatter={formatXAxisLabel} fontSize={12} />
               <YAxis fontSize={12} />
-              <Tooltip 
+              <Tooltip
                 formatter={formatTooltipValue}
                 labelStyle={{ color: 'var(--foreground)' }}
-                contentStyle={{ 
+                contentStyle={{
                   backgroundColor: 'var(--card)',
                   border: '1px solid var(--border)',
-                  borderRadius: '6px'
+                  borderRadius: '6px',
                 }}
               />
               {showLegend && <Legend />}
-              <Line 
-                type="monotone" 
-                dataKey="value" 
-                stroke={color} 
+              <Line
+                type='monotone'
+                dataKey='value'
+                stroke={color}
                 strokeWidth={2}
                 dot={{ fill: color, strokeWidth: 2, r: 4 }}
                 activeDot={{ r: 6, stroke: color, strokeWidth: 2 }}
@@ -193,24 +200,20 @@ export default function RealtimeChart({
             </LineChart>
           ) : (
             <BarChart data={data}>
-              {showGrid && <CartesianGrid strokeDasharray="3 3" />}
-              <XAxis 
-                dataKey="name" 
-                tickFormatter={formatXAxisLabel}
-                fontSize={12}
-              />
+              {showGrid && <CartesianGrid strokeDasharray='3 3' />}
+              <XAxis dataKey='name' tickFormatter={formatXAxisLabel} fontSize={12} />
               <YAxis fontSize={12} />
-              <Tooltip 
+              <Tooltip
                 formatter={formatTooltipValue}
                 labelStyle={{ color: 'var(--foreground)' }}
-                contentStyle={{ 
+                contentStyle={{
                   backgroundColor: 'var(--card)',
                   border: '1px solid var(--border)',
-                  borderRadius: '6px'
+                  borderRadius: '6px',
                 }}
               />
               {showLegend && <Legend />}
-              <Bar dataKey="value" fill={color} />
+              <Bar dataKey='value' fill={color} />
             </BarChart>
           )}
         </ResponsiveContainer>

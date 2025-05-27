@@ -1,6 +1,8 @@
 # 🚀 Atlas ERP v2 - Modern Enterprise Resource Planning
 
-A cutting-edge ERP system built with **Astro Islands Architecture**, **React**, **Turborepo**, and **ShadCN UI** for maximum performance and developer experience.
+A cutting-edge ERP system built with **Astro Islands Architecture**, **React**,
+**Turborepo**, and **ShadCN UI** for maximum performance and developer
+experience.
 
 ## ✨ Features
 

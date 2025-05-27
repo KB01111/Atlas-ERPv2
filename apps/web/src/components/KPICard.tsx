@@ -51,7 +51,7 @@ export default function KPICard({
 }: KPICardProps) {
   const formatValue = (val: number | string): string => {
     if (typeof val === 'string') return val;
-    
+
     switch (format) {
       case 'currency':
         return new Intl.NumberFormat('en-US', {
@@ -68,11 +68,11 @@ export default function KPICard({
   };
 
   const getTrendIcon = () => {
-    if (change === undefined || change === 0) return <Minus className="w-4 h-4" />;
+    if (change === undefined || change === 0) return <Minus className='w-4 h-4' />;
     return change > 0 ? (
-      <TrendingUp className="w-4 h-4 text-green-600" />
+      <TrendingUp className='w-4 h-4 text-green-600' />
     ) : (
-      <TrendingDown className="w-4 h-4 text-red-600" />
+      <TrendingDown className='w-4 h-4 text-red-600' />
     );
   };
 
@@ -91,19 +91,15 @@ export default function KPICard({
         ${className}
       `}
     >
-      <div className="flex items-center justify-between">
-        <div className="flex-1">
-          <p className="text-sm font-medium text-muted-foreground">{title}</p>
-          <p className="text-2xl font-bold text-foreground mt-1">
-            {formatValue(value)}
-          </p>
+      <div className='flex items-center justify-between'>
+        <div className='flex-1'>
+          <p className='text-sm font-medium text-muted-foreground'>{title}</p>
+          <p className='text-2xl font-bold text-foreground mt-1'>{formatValue(value)}</p>
           {change !== undefined && (
-            <div className="flex items-center gap-1 mt-2">
+            <div className='flex items-center gap-1 mt-2'>
               {getTrendIcon()}
-              <span className={`text-sm font-medium ${getTrendColor()}`}>
-                {Math.abs(change)}%
-              </span>
-              <span className="text-xs text-muted-foreground">vs last month</span>
+              <span className={`text-sm font-medium ${getTrendColor()}`}>{Math.abs(change)}%</span>
+              <span className='text-xs text-muted-foreground'>vs last month</span>
             </div>
           )}
         </div>
@@ -113,10 +109,10 @@ export default function KPICard({
           </div>
         )}
       </div>
-      
+
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white to-transparent" />
+      <div className='absolute inset-0 opacity-5'>
+        <div className='absolute inset-0 bg-gradient-to-br from-transparent via-white to-transparent' />
       </div>
     </div>
   );

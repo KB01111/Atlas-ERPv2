@@ -6,7 +6,7 @@ import type { APIRoute } from 'astro';
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    
+
     // Basic response structure for CopilotKit
     const response = {
       id: `chatcmpl-${Date.now()}`,
@@ -58,7 +58,7 @@ How can I assist you today?`,
     });
   } catch (error) {
     console.error('CopilotKit API error:', error);
-    
+
     return new Response(
       JSON.stringify({
         error: 'Internal server error',

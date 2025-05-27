@@ -4,30 +4,27 @@ import { supabase } from '../../../lib/supabase-client';
 export const GET: APIRoute = async ({ request, url }) => {
   try {
     const authHeader = request.headers.get('Authorization');
-    
+
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return new Response(
-        JSON.stringify({ error: 'Authentication required' }),
-        { 
-          status: 401,
-          headers: { 'Content-Type': 'application/json' }
-        }
-      );
+      return new Response(JSON.stringify({ error: 'Authentication required' }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     const token = authHeader.substring(7);
-    
+
     // Verify user session
-    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
-    
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser(token);
+
     if (authError || !user) {
-      return new Response(
-        JSON.stringify({ error: 'Invalid authentication token' }),
-        { 
-          status: 401,
-          headers: { 'Content-Type': 'application/json' }
-        }
-      );
+      return new Response(JSON.stringify({ error: 'Invalid authentication token' }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     // Parse query parameters
@@ -43,9 +40,8 @@ export const GET: APIRoute = async ({ request, url }) => {
     const offset = (page - 1) * limit;
 
     // Build query
-    let query = supabase
-      .from('documents')
-      .select(`
+    let query = supabase.from('documents').select(
+      `
         id,
         title,
         description,
@@ -61,11 +57,15 @@ export const GET: APIRoute = async ({ request, url }) => {
           last_name,
           email
         )
-      `, { count: 'exact' });
+      `,
+      { count: 'exact' }
+    );
 
     // Apply filters
     if (search) {
-      query = query.or(`title.ilike.%${search}%,description.ilike.%${search}%,file_name.ilike.%${search}%`);
+      query = query.or(
+        `title.ilike.%${search}%,description.ilike.%${search}%,file_name.ilike.%${search}%`
+      );
     }
 
     if (tags.length > 0) {
@@ -82,13 +82,10 @@ export const GET: APIRoute = async ({ request, url }) => {
 
     if (error) {
       console.error('Database error:', error);
-      return new Response(
-        JSON.stringify({ error: 'Failed to fetch documents' }),
-        { 
-          status: 500,
-          headers: { 'Content-Type': 'application/json' }
-        }
-      );
+      return new Response(JSON.stringify({ error: 'Failed to fetch documents' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     // Calculate pagination info
@@ -97,7 +94,7 @@ export const GET: APIRoute = async ({ request, url }) => {
     const hasPrevPage = page > 1;
 
     return new Response(
-      JSON.stringify({ 
+      JSON.stringify({
         documents: documents || [],
         pagination: {
           page,
@@ -105,23 +102,19 @@ export const GET: APIRoute = async ({ request, url }) => {
           total: count || 0,
           totalPages,
           hasNextPage,
-          hasPrevPage
-        }
+          hasPrevPage,
+        },
       }),
-      { 
+      {
         status: 200,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       }
     );
-
   } catch (error) {
     console.error('Fetch documents error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Internal server error' }),
-      { 
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      }
-    );
+    return new Response(JSON.stringify({ error: 'Internal server error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 };

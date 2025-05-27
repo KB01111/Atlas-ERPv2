@@ -1,111 +1,129 @@
 ---
-import DashboardLayout from '../layouts/DashboardLayout.astro';
-import Navigation from '../components/Navigation.tsx';
-import DashboardStats from '../components/DashboardStats.tsx';
-import KPICard from '../components/KPICard.tsx';
-import StatusPanel from '../components/StatusPanel.tsx';
 import CopilotProvider from '../components/CopilotProvider.tsx';
+import DashboardStats from '../components/DashboardStats.tsx';
+import StatusPanel from '../components/StatusPanel.tsx';
+import ModernNavigation from '../components/ui/ModernNavigation.tsx';
+import ModernDashboardLayout from '../layouts/ModernDashboardLayout.astro';
 ---
 
-<DashboardLayout title="Dashboard - Atlas ERP v2">
-  <Navigation slot="navigation" client:load />
+<ModernDashboardLayout title='Dashboard - Atlas ERP v2'>
+  <ModernNavigation slot='navigation' client:load />
 
   <CopilotProvider client:load>
-    <div class="space-y-6">
-    <!-- Static Header (No JavaScript) -->
-    <header class="mb-8">
-      <h1 class="text-4xl font-bold text-center mb-4">Atlas ERP v2</h1>
-      <p class="text-xl text-muted-foreground text-center max-w-2xl mx-auto">
-        Experience the power of Astro's Islands Architecture - Static HTML with selective hydration for maximum performance.
-      </p>
-    </header>
+    <div class='space-y-6'>
+      <!-- Welcome Section -->
+      <section class='text-center py-8'>
+        <h1 class='text-4xl font-bold text-gradient mb-4'>🚀 Welcome to Atlas ERP v2</h1>
+        <p class='text-xl text-neutral-600 max-w-2xl mx-auto'>
+          Experience the power of modern ERP with cutting-edge design and performance.
+        </p>
+      </section>
 
-    <!-- Static Content Section (No JavaScript) -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4">🏝️ Islands Architecture Benefits</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="p-6 border rounded-lg">
-          <h3 class="font-semibold mb-2">⚡ Zero JS by Default</h3>
-          <p class="text-sm text-muted-foreground">
-            This content loads instantly with zero JavaScript, providing perfect SEO and performance.
-          </p>
+      <!-- Static Content Section (No JavaScript) -->
+      <section class='mb-12'>
+        <h2 class='text-2xl font-semibold mb-4'>🏝️ Islands Architecture Benefits</h2>
+        <div class='grid grid-cols-1 md:grid-cols-3 gap-6'>
+          <div class='p-6 border rounded-lg'>
+            <h3 class='font-semibold mb-2'>⚡ Zero JS by Default</h3>
+            <p class='text-sm text-muted-foreground'>
+              This content loads instantly with zero JavaScript, providing perfect SEO and
+              performance.
+            </p>
+          </div>
+          <div class='p-6 border rounded-lg'>
+            <h3 class='font-semibold mb-2'>🎯 Selective Hydration</h3>
+            <p class='text-sm text-muted-foreground'>
+              Only interactive components below get JavaScript, keeping the page lightweight.
+            </p>
+          </div>
+          <div class='p-6 border rounded-lg'>
+            <h3 class='font-semibold mb-2'>🚀 Best Performance</h3>
+            <p class='text-sm text-muted-foreground'>
+              40-90% faster than traditional SPAs with perfect Lighthouse scores.
+            </p>
+          </div>
         </div>
-        <div class="p-6 border rounded-lg">
-          <h3 class="font-semibold mb-2">🎯 Selective Hydration</h3>
-          <p class="text-sm text-muted-foreground">
-            Only interactive components below get JavaScript, keeping the page lightweight.
-          </p>
-        </div>
-        <div class="p-6 border rounded-lg">
-          <h3 class="font-semibold mb-2">🚀 Best Performance</h3>
-          <p class="text-sm text-muted-foreground">
-            40-90% faster than traditional SPAs with perfect Lighthouse scores.
-          </p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- KPI Cards Section (Interactive Islands) -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-6">📊 Key Performance Indicators</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <KPICard
-          title="Total Revenue"
-          value={125000}
-          change={12.5}
-          color="green"
-          format="currency"
-          client:load
-        />
-        <KPICard
-          title="Active Projects"
-          value={42}
-          change={8.3}
-          color="blue"
-          format="number"
-          client:load
-        />
-        <KPICard
-          title="Team Members"
-          value={28}
-          change={-2.1}
-          color="purple"
-          format="number"
-          client:load
-        />
-        <KPICard
-          title="Completion Rate"
-          value={94.2}
-          change={5.7}
-          color="yellow"
-          format="percentage"
-          client:load
-        />
-      </div>
-    </section>
+      <!-- Enhanced KPI Cards Section -->
+      <section class='mb-12'>
+        <h2 class='text-3xl font-bold text-gradient mb-8'>📊 Key Performance Indicators</h2>
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8'>
+          <RevenueKPICard
+            value={125000}
+            change={12.5}
+            target={150000}
+            variant='gradient'
+            animated={true}
+            client:load
+          />
+          <UsersKPICard
+            value={1284}
+            change={8.3}
+            target={1500}
+            variant='gradient'
+            animated={true}
+            client:load
+          />
+          <EnhancedKPICard
+            title='Active Projects'
+            value={42}
+            change={-2.1}
+            color='purple'
+            icon='target'
+            format='number'
+            target={50}
+            variant='gradient'
+            animated={true}
+            client:load
+          />
+          <ConversionKPICard
+            value={94.2}
+            change={5.7}
+            target={95}
+            variant='gradient'
+            animated={true}
+            client:load
+          />
+        </div>
+      </section>
 
-    <!-- Status Panel and Analytics Grid -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-6">📈 System Overview</h2>
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Status Panel -->
-        <div class="lg:col-span-1">
-          <StatusPanel client:load />
+      <!-- Enhanced System Overview -->
+      <section class='mb-12'>
+        <h2 class='text-3xl font-bold text-gradient mb-8'>📈 System Overview</h2>
+        <div class='grid grid-cols-1 lg:grid-cols-3 gap-6'>
+          <!-- Status Panel -->
+          <div class='lg:col-span-1'>
+            <Card variant='glass' className='h-full' client:load>
+              <CardHeader>
+                <CardTitle gradient={true}>System Health</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <StatusPanel client:load />
+              </CardContent>
+            </Card>
+          </div>
+          <!-- Dashboard Stats -->
+          <div class='lg:col-span-2'>
+            <Card variant='glass' className='h-full' client:load>
+              <CardHeader>
+                <CardTitle gradient={true}>Analytics Overview</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <DashboardStats client:load />
+              </CardContent>
+            </Card>
+          </div>
         </div>
-        <!-- Dashboard Stats -->
-        <div class="lg:col-span-2">
-          <DashboardStats client:load />
-        </div>
-      </div>
-    </section>
+      </section>
 
       <!-- Static Footer (No JavaScript) -->
-      <footer class="text-center text-muted-foreground">
+      <footer class='text-center text-muted-foreground'>
         <p>Built with Astro + React + Turborepo + ShadCN UI</p>
-        <p class="text-sm mt-2">
+        <p class='text-sm mt-2'>
           🔥 This page loads instantly and only hydrates interactive components!
         </p>
       </footer>
     </div>
   </CopilotProvider>
-</DashboardLayout>
+</ModernDashboardLayout>

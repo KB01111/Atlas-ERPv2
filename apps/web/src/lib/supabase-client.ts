@@ -1,6 +1,6 @@
 /**
  * Supabase Client for Atlas-ERP v2
- * 
+ *
  * This module provides a type-safe wrapper around the Supabase client
  * optimized for Astro's Islands Architecture.
  */
@@ -19,15 +19,15 @@ export type SupabaseInputRecord<T = unknown> = Omit<T, 'id'> & {
 };
 
 // Create a singleton instance of the Supabase client
-let supabase: SupabaseClient | null = null;
+let supabaseInstance: SupabaseClient | null = null;
 
 /**
  * Initialize the Supabase client
  * @returns The Supabase client instance
  */
 export async function initSupabaseDB(): Promise<SupabaseClient> {
-  if (supabase) {
-    return supabase;
+  if (supabaseInstance) {
+    return supabaseInstance;
   }
 
   // Get connection details from environment variables
@@ -40,9 +40,9 @@ export async function initSupabaseDB(): Promise<SupabaseClient> {
 
   try {
     // Create a new Supabase client
-    supabase = createClient(url, key);
+    supabaseInstance = createClient(url, key);
     console.log(`Connected to Supabase at ${url}`);
-    return supabase;
+    return supabaseInstance;
   } catch (error) {
     console.error('Failed to connect to Supabase:', error);
     throw error;
@@ -54,10 +54,10 @@ export async function initSupabaseDB(): Promise<SupabaseClient> {
  * @returns The Supabase client instance
  */
 export async function getSupabaseDB(): Promise<SupabaseClient> {
-  if (!supabase) {
+  if (!supabaseInstance) {
     return initSupabaseDB();
   }
-  return supabase;
+  return supabaseInstance;
 }
 
 /**
@@ -76,7 +76,7 @@ export async function query<T extends SupabaseRecord>(
   } = {}
 ): Promise<T[]> {
   const db = await getSupabaseDB();
-  
+
   try {
     let queryBuilder = db.from(table).select(options.select || '*');
 
@@ -155,12 +155,7 @@ export async function update<T extends SupabaseRecord>(
   const db = await getSupabaseDB();
 
   try {
-    const { data, error } = await db
-      .from(table)
-      .update(updates)
-      .eq('id', id)
-      .select()
-      .single();
+    const { data, error } = await db.from(table).update(updates).eq('id', id).select().single();
 
     if (error) {
       console.error(`Error updating record ${id} in ${table}:`, error);
@@ -200,6 +195,21 @@ export async function remove<T extends SupabaseRecord>(
     throw error;
   }
 }
+
+/**
+ * Get a direct Supabase client instance (for API routes)
+ * @returns The Supabase client instance
+ */
+export async function getSupabaseClient(): Promise<SupabaseClient> {
+  return getSupabaseDB();
+}
+
+// Create and export a direct client instance for API routes
+const url = import.meta.env.PUBLIC_SUPABASE_URL || import.meta.env.SUPABASE_URL;
+const key = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || import.meta.env.SUPABASE_ANON_KEY;
+
+// Export a direct client instance for API routes
+export const supabase = url && key ? createClient(url, key) : (null as any);
 
 // Export the client
 const supabaseClient = {

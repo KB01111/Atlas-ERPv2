@@ -7,11 +7,11 @@ interface FileUploadProps {
   maxSize?: number; // in MB
 }
 
-export default function FileUpload({ 
-  onUploadSuccess, 
+export default function FileUpload({
+  onUploadSuccess,
   onUploadError,
   acceptedTypes = ['*'],
-  maxSize = 10
+  maxSize = 10,
 }: FileUploadProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -34,7 +34,7 @@ export default function FileUpload({
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
-    
+
     const files = Array.from(e.dataTransfer.files);
     if (files.length > 0) {
       handleFileUpload(files[0]);
@@ -51,19 +51,19 @@ export default function FileUpload({
   const handleFileUpload = async (file: File) => {
     // Validate file size
     if (file.size > maxSize * 1024 * 1024) {
-      onUploadError?.(File size exceeds ${maxSize}MB limit);
+      onUploadError?.(`File size exceeds ${maxSize}MB limit`);
       return;
     }
 
     // Validate file type
     if (acceptedTypes.length > 0 && !acceptedTypes.includes('*')) {
       const fileType = file.type;
-      const isValidType = acceptedTypes.some(type => 
-        type === fileType || fileType.startsWith(type.replace('*', ''))
+      const isValidType = acceptedTypes.some(
+        type => type === fileType || fileType.startsWith(type.replace('*', ''))
       );
-      
+
       if (!isValidType) {
-        onUploadError?.(File type not supported);
+        onUploadError?.(`File type not supported`);
         return;
       }
     }
@@ -89,7 +89,7 @@ export default function FileUpload({
       const response = await fetch('/api/documents/upload', {
         method: 'POST',
         headers: {
-          'Authorization': Bearer ${token}
+          Authorization: `Bearer ${token}`,
         },
         body: formData,
       });
@@ -102,7 +102,7 @@ export default function FileUpload({
 
       setUploadProgress(100);
       onUploadSuccess?.(data.document);
-      
+
       // Reset form
       setTitle('');
       setDescription('');
@@ -110,7 +110,6 @@ export default function FileUpload({
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
       }
-
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Upload failed';
       onUploadError?.(errorMessage);
@@ -121,50 +120,50 @@ export default function FileUpload({
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-card rounded-lg border">
-      <h3 className="text-lg font-semibold mb-4">Upload Document</h3>
-      
+    <div className='max-w-2xl mx-auto p-6 bg-card rounded-lg border'>
+      <h3 className='text-lg font-semibold mb-4'>Upload Document</h3>
+
       {/* File metadata form */}
-      <div className="space-y-4 mb-6">
+      <div className='space-y-4 mb-6'>
         <div>
-          <label htmlFor="title" className="block text-sm font-medium mb-2">
+          <label htmlFor='title' className='block text-sm font-medium mb-2'>
             Title (optional)
           </label>
           <input
-            id="title"
-            type="text"
+            id='title'
+            type='text'
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-            placeholder="Document title"
+            onChange={e => setTitle(e.target.value)}
+            className='w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary'
+            placeholder='Document title'
           />
         </div>
 
         <div>
-          <label htmlFor="description" className="block text-sm font-medium mb-2">
+          <label htmlFor='description' className='block text-sm font-medium mb-2'>
             Description (optional)
           </label>
           <textarea
-            id="description"
+            id='description'
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={e => setDescription(e.target.value)}
             rows={3}
-            className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-            placeholder="Document description"
+            className='w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary'
+            placeholder='Document description'
           />
         </div>
 
         <div>
-          <label htmlFor="tags" className="block text-sm font-medium mb-2">
+          <label htmlFor='tags' className='block text-sm font-medium mb-2'>
             Tags (optional)
           </label>
           <input
-            id="tags"
-            type="text"
+            id='tags'
+            type='text'
             value={tags}
-            onChange={(e) => setTags(e.target.value)}
-            className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-            placeholder="tag1, tag2, tag3"
+            onChange={e => setTags(e.target.value)}
+            className='w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary'
+            placeholder='tag1, tag2, tag3'
           />
         </div>
       </div>
@@ -172,9 +171,7 @@ export default function FileUpload({
       {/* Drag and drop area */}
       <div
         className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-          isDragging 
-            ? 'border-primary bg-primary/5' 
-            : 'border-border hover:border-primary/50'
+          isDragging ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'
         }`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -182,35 +179,33 @@ export default function FileUpload({
       >
         <input
           ref={fileInputRef}
-          type="file"
+          type='file'
           onChange={handleFileSelect}
-          className="hidden"
+          className='hidden'
           accept={acceptedTypes.join(',')}
         />
-        
+
         {isUploading ? (
-          <div className="space-y-4">
-            <div className="text-lg font-medium">Uploading...</div>
-            <div className="w-full bg-secondary rounded-full h-2">
-              <div 
-                className="bg-primary h-2 rounded-full transition-all duration-300"
+          <div className='space-y-4'>
+            <div className='text-lg font-medium'>Uploading...</div>
+            <div className='w-full bg-secondary rounded-full h-2'>
+              <div
+                className='bg-primary h-2 rounded-full transition-all duration-300'
                 style={{ width: `${uploadProgress}%` }}
               />
             </div>
-            <div className="text-sm text-muted-foreground">{uploadProgress}%</div>
+            <div className='text-sm text-muted-foreground'>{uploadProgress}%</div>
           </div>
         ) : (
-          <div className="space-y-4">
-            <div className="text-4xl">📁</div>
+          <div className='space-y-4'>
+            <div className='text-4xl'>📁</div>
             <div>
-              <p className="text-lg font-medium">Drop files here or click to browse</p>
-              <p className="text-sm text-muted-foreground mt-2">
-                Maximum file size: {maxSize}MB
-              </p>
+              <p className='text-lg font-medium'>Drop files here or click to browse</p>
+              <p className='text-sm text-muted-foreground mt-2'>Maximum file size: {maxSize}MB</p>
             </div>
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 transition-colors"
+              className='bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 transition-colors'
             >
               Choose File
             </button>
