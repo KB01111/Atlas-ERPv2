@@ -1,0 +1,147 @@
+---
+import DashboardLayout from '../layouts/DashboardLayout.astro';
+import Navigation from '../components/Navigation.tsx';
+import FileUpload from '../components/FileUpload.tsx';
+---
+
+<DashboardLayout title="Documents - Atlas ERP v2">
+  <Navigation slot="navigation" client:load />
+
+  <div class="space-y-6">
+    <!-- Static Header -->
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold mb-2">Document Management</h1>
+      <p class="text-muted-foreground">
+        Manage your documents with AI-powered search and processing capabilities.
+      </p>
+    </header>
+
+    <!-- Document Stats (Static) -->
+    <section class="mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="p-6 border rounded-lg bg-card">
+          <h3 class="font-semibold mb-2">📄 Total Documents</h3>
+          <p class="text-2xl font-bold">1,247</p>
+          <p class="text-sm text-muted-foreground">+23 this week</p>
+        </div>
+        <div class="p-6 border rounded-lg bg-card">
+          <h3 class="font-semibold mb-2">🔍 Processed</h3>
+          <p class="text-2xl font-bold">1,198</p>
+          <p class="text-sm text-muted-foreground">96.1% completion</p>
+        </div>
+        <div class="p-6 border rounded-lg bg-card">
+          <h3 class="font-semibold mb-2">📊 Storage Used</h3>
+          <p class="text-2xl font-bold">2.4 GB</p>
+          <p class="text-sm text-muted-foreground">of 10 GB limit</p>
+        </div>
+        <div class="p-6 border rounded-lg bg-card">
+          <h3 class="font-semibold mb-2">🤖 AI Insights</h3>
+          <p class="text-2xl font-bold">847</p>
+          <p class="text-sm text-muted-foreground">extracted entities</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Document Features (Static) -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">🚀 Document Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-6 border rounded-lg">
+          <h3 class="font-semibold mb-2">📤 Smart Upload</h3>
+          <p class="text-sm text-muted-foreground">
+            Drag & drop files with automatic OCR and text extraction.
+          </p>
+        </div>
+        <div class="p-6 border rounded-lg">
+          <h3 class="font-semibold mb-2">🔍 AI Search</h3>
+          <p class="text-sm text-muted-foreground">
+            Vector-based semantic search across all document content.
+          </p>
+        </div>
+        <div class="p-6 border rounded-lg">
+          <h3 class="font-semibold mb-2">📊 Analytics</h3>
+          <p class="text-sm text-muted-foreground">
+            Document insights, trends, and usage analytics.
+          </p>
+        </div>
+        <div class="p-6 border rounded-lg">
+          <h3 class="font-semibold mb-2">🔄 Version Control</h3>
+          <p class="text-sm text-muted-foreground">
+            Track document changes and maintain version history.
+          </p>
+        </div>
+        <div class="p-6 border rounded-lg">
+          <h3 class="font-semibold mb-2">🏷️ Auto Tagging</h3>
+          <p class="text-sm text-muted-foreground">
+            AI-powered automatic categorization and tagging.
+          </p>
+        </div>
+        <div class="p-6 border rounded-lg">
+          <h3 class="font-semibold mb-2">🔗 Knowledge Graph</h3>
+          <p class="text-sm text-muted-foreground">
+            Connect documents through intelligent relationship mapping.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- File Upload Section (React Island) -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">📁 Upload Documents</h2>
+      <FileUpload client:load />
+    </section>
+
+    <!-- Recent Documents (Static) -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">📋 Recent Documents</h2>
+      <div class="border rounded-lg overflow-hidden">
+        <table class="w-full">
+          <thead class="bg-muted">
+            <tr>
+              <th class="text-left p-4 font-medium">Name</th>
+              <th class="text-left p-4 font-medium">Type</th>
+              <th class="text-left p-4 font-medium">Size</th>
+              <th class="text-left p-4 font-medium">Modified</th>
+              <th class="text-left p-4 font-medium">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t">
+              <td class="p-4">Financial Report Q4.pdf</td>
+              <td class="p-4">PDF</td>
+              <td class="p-4">2.4 MB</td>
+              <td class="p-4">2 hours ago</td>
+              <td class="p-4">
+                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">
+                  Processed
+                </span>
+              </td>
+            </tr>
+            <tr class="border-t">
+              <td class="p-4">Project Proposal.docx</td>
+              <td class="p-4">Word</td>
+              <td class="p-4">1.2 MB</td>
+              <td class="p-4">1 day ago</td>
+              <td class="p-4">
+                <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs">
+                  Processing
+                </span>
+              </td>
+            </tr>
+            <tr class="border-t">
+              <td class="p-4">Meeting Notes.txt</td>
+              <td class="p-4">Text</td>
+              <td class="p-4">45 KB</td>
+              <td class="p-4">3 days ago</td>
+              <td class="p-4">
+                <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">
+                  Processed
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</DashboardLayout>

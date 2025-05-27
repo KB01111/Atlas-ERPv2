@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Web App",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/apps/web/dist/server/entry.mjs",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "Launch Docs",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/apps/docs/node_modules/.bin/next",
+      "args": ["dev"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}

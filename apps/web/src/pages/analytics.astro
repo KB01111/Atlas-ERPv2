@@ -2,11 +2,12 @@
 import DashboardLayout from '../layouts/DashboardLayout.astro';
 import Navigation from '../components/Navigation.tsx';
 import AnalyticsCharts from '../components/AnalyticsCharts.tsx';
+import RealtimeChart from '../components/RealtimeChart.tsx';
 ---
 
 <DashboardLayout title="Analytics - Atlas ERP v2">
   <Navigation slot="navigation" client:load />
-  
+
   <div class="space-y-6">
     <div class="flex justify-between items-center">
       <h1 class="text-3xl font-bold">Analytics</h1>
