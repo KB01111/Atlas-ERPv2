@@ -1,5 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with
-[`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app).
+# Atlas ERP v2 Documentation
+
+This documentation app provides comprehensive guides and API references for Atlas ERP v2.
 
 ## Getting Started
 
