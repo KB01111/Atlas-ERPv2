@@ -12,7 +12,7 @@ export default defineConfig({
       applyBaseStyles: true, // Enable Tailwind base styles
     }),
   ],
-  output: 'static', // Static generation for maximum performance
+  output: 'server', // Static generation for maximum performance
   adapter: node({
     mode: 'standalone',
   }),
