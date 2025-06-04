@@ -11,7 +11,7 @@
     "lint": "eslint . --max-warnings 50"
   },
   "dependencies": {
-    "@astrojs/vercel": "^7.7.0",
+    "@astrojs/vercel": "^8.1.5",
     "@astrojs/react": "^4.0.0",
     "@astrojs/tailwind": "^6.0.2",
     "@copilotkit/react-core": "^1.8.12",
@@ -25,6 +25,7 @@
     "@supabase/supabase-js": "^2.39.0",
     "@tailwindcss/typography": "^0.5.15",
     "@tanstack/react-query": "^5.62.7",
+    "@repo/ui": "workspace:*",
     "@types/react": "^18.3.17",
     "@types/react-dom": "^18.3.5",
     "arangojs": "^8.8.1",
