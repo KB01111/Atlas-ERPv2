@@ -1,5 +1,5 @@
 // @ts-check
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel/serverless';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
@@ -12,10 +12,8 @@ export default defineConfig({
       applyBaseStyles: true, // Enable Tailwind base styles
     }),
   ],
-  output: 'static', // Static generation for maximum performance
-  adapter: node({
-    mode: 'standalone',
-  }),
+  output: 'server', // Server-side rendering for Vercel
+  adapter: vercel(),
   vite: {
     optimizeDeps: {
       include: ['react', 'react-dom', 'framer-motion'],
