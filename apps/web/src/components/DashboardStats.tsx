@@ -1,35 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
-// Inline Button component for now
-const Button = ({
-  children,
-  onClick,
-  variant = 'default',
-  className = '',
-}: {
-  children: React.ReactNode;
-  onClick?: () => void;
-  variant?: string;
-  className?: string;
-}) => (
-  <button
-    onClick={onClick}
-    className={`inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 ${
-      variant === 'outline'
-        ? 'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground'
-        : 'bg-primary text-primary-foreground shadow hover:bg-primary/90'
-    } h-9 px-4 py-2 ${className}`}
-  >
-    {children}
-  </button>
-);
-
-// Inline Card component for now
-const Card = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
-  <div className={`rounded-xl border bg-card text-card-foreground shadow ${className}`}>
-    {children}
-  </div>
-);
+import { Button } from '@repo/ui/button';
+import { Card } from '@repo/ui/card';
 
 interface StatsData {
   totalProjects: number;
