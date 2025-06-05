@@ -35,7 +35,7 @@
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
-    "build": "tsup"
+    "build": "pnpm exec tsup"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
