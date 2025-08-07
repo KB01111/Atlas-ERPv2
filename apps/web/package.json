@@ -29,7 +29,7 @@
     "@types/react": "^18.3.17",
     "@types/react-dom": "^18.3.5",
     "arangojs": "^8.8.1",
-    "astro": "^5.8.0",
+    "astro": "^5.12.8",
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
