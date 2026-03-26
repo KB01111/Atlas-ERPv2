@@ -11,7 +11,7 @@
     "lint": "eslint . --max-warnings 50"
   },
   "dependencies": {
-    "@astrojs/vercel": "^8.1.5",
+    "@astrojs/vercel": "^10.0.2",
     "@astrojs/react": "^4.0.0",
     "@astrojs/tailwind": "^6.0.2",
     "@copilotkit/react-core": "^1.8.12",
@@ -29,8 +29,8 @@
     "@types/react": "^18.3.17",
     "@types/react-dom": "^18.3.5",
     "arangojs": "^8.8.1",
-    "astro": "^5.8.0",
-    "axios": "^1.6.8",
+    "astro": "^5.18.1",
+    "axios": "^1.13.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cytoscape": "^3.28.1",
